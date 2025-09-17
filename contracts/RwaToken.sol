@@ -10,10 +10,6 @@ interface ICompliance {
         external view returns (bool, uint256);
 }
 
-/**
- * ERC-20-like token with a compliance hook (ERC-3643-style).
- * Demo only — not production. Uses OZ v5 (pinned URL imports).
- */
 contract RwaToken is ERC20, AccessControl, Pausable {
     bytes32 public constant ISSUER_ROLE = keccak256("ISSUER_ROLE");
     ICompliance public compliance;
@@ -26,7 +22,6 @@ contract RwaToken is ERC20, AccessControl, Pausable {
         _grantRole(DEFAULT_ADMIN_ROLE, admin);
         _grantRole(ISSUER_ROLE, admin);
         compliance = ICompliance(comp);
-        _mint(admin, 1_000_000 ether); // demo supply
     }
 
     function pause() external onlyRole(DEFAULT_ADMIN_ROLE) { _pause(); }
@@ -41,7 +36,12 @@ contract RwaToken is ERC20, AccessControl, Pausable {
         super._update(from, to, value);
     }
 
-    // Regulated recovery (issuer only) — still passes compliance hook.
+    // Mint after KYC is set
+    function mint(address to, uint256 value) external onlyRole(ISSUER_ROLE) {
+        _update(address(0), to, value); // run compliance (receiver must be KYC'd)
+        _mint(to, value);
+    }
+
     function forceTransfer(address from, address to, uint256 value, string calldata reason)
         external onlyRole(ISSUER_ROLE)
     {
@@ -51,8 +51,7 @@ contract RwaToken is ERC20, AccessControl, Pausable {
 
     function _toStr(uint256 x) internal pure returns (string memory) {
         if (x == 0) return "0";
-        bytes memory b;
-        while (x != 0) { b = abi.encodePacked(uint8(48 + x % 10), b); x /= 10; }
+        bytes memory b; while (x != 0) { b = abi.encodePacked(uint8(48 + x % 10), b); x /= 10; }
         return string(b);
     }
 }

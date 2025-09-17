@@ -27,6 +27,25 @@
 				"type": "constructor"
 			},
 			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "rulesHash",
+						"type": "bytes32"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "uri",
+						"type": "string"
+					}
+				],
+				"name": "RulesUpdated",
+				"type": "event"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint8",
@@ -121,7 +140,7 @@
 				"name": "reg",
 				"outputs": [
 					{
-						"internalType": "contract IIdentityRegistry2",
+						"internalType": "contract IIdentityRegistry",
 						"name": "",
 						"type": "address"
 					}
@@ -138,12 +157,13 @@
 		"userdoc": {
 			"kind": "user",
 			"methods": {},
+			"notice": "Deterministic compliance checks (ERC-3643-style). On-chain logic only; mirror the same policy off-chain for surveillance.",
 			"version": 1
 		}
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Compliance_bug_noReceiverKYC.sol": "Compliance_Bug_NoReceiverKYC"
+			"contracts/Compliance3643Lite.sol": "Compliance3643Lite"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -157,12 +177,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/Compliance_bug_noReceiverKYC.sol": {
-			"keccak256": "0x4dff018b4de8ffa2f2fecbc5f7322148c2bfc8f0960df9920155412c3f247312",
+		"contracts/Compliance3643Lite.sol": {
+			"keccak256": "0x8639946995f5d08d207e7f29e337e6e17366e8673b1cff52294d8ed72d59ae6c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://b9af627a54248a56c7c8d2c65c70bb0611ec5230af97ce9332c202371afc97ed",
-				"dweb:/ipfs/QmcEVeH7m7g5vtghZbwA3cKVvPFxs4V2yPgpqjz1qjkRBa"
+				"bzz-raw://e40dc8a2a6b059fcf5348d205d0b761f76783e2fab5c5c7db93e84aee9d4b792",
+				"dweb:/ipfs/QmeSWRdTw7Gy3wdsQErpu5cwwhZt2wr26u7fnSwcmkWYoH"
 			]
 		}
 	},

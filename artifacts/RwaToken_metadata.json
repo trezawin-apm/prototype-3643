@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.30+commit.73712a01"
+		"version": "0.8.20+commit.a1b79de6"
 	},
 	"language": "Solidity",
 	"output": {
@@ -539,6 +539,24 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "mint",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "name",
 				"outputs": [
@@ -867,7 +885,6 @@
 		"userdoc": {
 			"kind": "user",
 			"methods": {},
-			"notice": "ERC-20-like token with a compliance hook (ERC-3643-style). Demo only — not production. Uses OZ v5 (pinned URL imports).",
 			"version": 1
 		}
 	},
@@ -875,7 +892,7 @@
 		"compilationTarget": {
 			"contracts/RwaToken.sol": "RwaToken"
 		},
-		"evmVersion": "prague",
+		"evmVersion": "shanghai",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -888,11 +905,11 @@
 	},
 	"sources": {
 		"contracts/RwaToken.sol": {
-			"keccak256": "0x80ab927c34d50fc4e9287d9da762da7f7d19032dea32fa90096d0464ae94baf0",
+			"keccak256": "0x4dc8b0e4a0e9e5e9a3b0c558def389a4a33e242d0666d64e5d87093c9674bba9",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://d2c8ca9f93b3162482145157ea13ea183441a0121d200350b24d70aeefc6555a",
-				"dweb:/ipfs/QmWnifRH8AUoSMkdJ1HFfWqKmpsRyKYvuCEwr8UiW4cGUB"
+				"bzz-raw://d1b020a315466ce2b22460a66c242811d05c6f0f553585bd91006d9259dffdf8",
+				"dweb:/ipfs/QmVrWChWJyBmUj3gndN1cmvyzcrDp8uStkkGQDHwHgndcj"
 			]
 		},
 		"https://raw.githubusercontent.com/OpenZeppelin/openzeppelin-contracts/v5.0.2/contracts/access/AccessControl.sol": {
